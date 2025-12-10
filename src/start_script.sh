@@ -1,3 +1,6 @@
-git clone https://github.com/Hearmeman24/comfyui-wan.git
-mv comfyui-wan/src/start.sh /
-bash /start.sh
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Use the start.sh provided by this image instead of pulling an external repo
+chmod +x /start.sh
+exec /start.sh
