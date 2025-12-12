@@ -27,8 +27,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 ENV PATH="/opt/venv/bin:$PATH"
 
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install --pre torch torchvision torchaudio \
-        --index-url https://download.pytorch.org/whl/nightly/cu128
+    pip install --default-timeout=600 --retries=10 \
+        --pre torch torchvision torchaudio \
+        --index-url https://download.pytorch.org/whl/cu128
 
 # Core Python tooling
 RUN --mount=type=cache,target=/root/.cache/pip \
